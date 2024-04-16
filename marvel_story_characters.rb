@@ -78,6 +78,7 @@ def generate_marvel_story_html(character_name)
   story, story_url = fetch_random_story_with_character(character_name)
   return unless story
 
+  # Using series description, due to the fact that there is no description for story at all
   description = fetch_series_description(story_url)
   characters = story['characters']['items']
   for character in characters
