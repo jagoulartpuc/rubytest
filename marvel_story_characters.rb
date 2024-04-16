@@ -37,13 +37,33 @@ def fetch_character_info(character_id)
 def fetch_random_story_with_character(character_id)
   auth_params = generate_auth_params
   stories_url, image_url = fetch_character_info(character_id)
-  response = HTTParty.get(stories_url.sample, query: auth_params)
+  random_story_url = stories_url.sample
+  response = HTTParty.get(random_story_url, query: auth_params)
   if response.code == 200
     data = response.parsed_response['data']
     results = data['results']
     if results.any?
       story = results.first   
-      return story
+      return story, random_story_url
+    else
+      puts 'No results found.'
+    end
+  else
+    puts "Error: API request failed with code #{response.code}"
+  end
+
+  nil
+end
+
+def fetch_series_description(story_url)
+  auth_params = generate_auth_params
+  response = HTTParty.get("#{story_url}/series", query: auth_params)
+  if response.code == 200
+    data = response.parsed_response['data']
+    results = data['results']
+    if results.any?
+      description = results.first['description']   
+      return description
     else
       puts 'No results found.'
     end
@@ -55,10 +75,10 @@ def fetch_random_story_with_character(character_id)
 end
 
 def generate_marvel_story_html(character_name)
-  story = fetch_random_story_with_character(character_name)
+  story, story_url = fetch_random_story_with_character(character_name)
   return unless story
 
-  description = story['description']
+  description = fetch_series_description(story_url)
   characters = story['characters']['items']
   for character in characters
     character_id = character['resourceURI'].split('/').last
