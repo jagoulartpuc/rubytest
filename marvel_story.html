@@ -3,17 +3,93 @@
 <head>
   <meta charset="UTF-8">
   <title>Marvel Story</title>
+  <style>
+    /* Optional: Add any additional CSS styles here */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table, th, td {
+      border: 1px solid black;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    img {
+      max-width: 100px; /* Adjust the image width as desired */
+      height: auto; /* Maintain aspect ratio */
+      display: block; /* Ensure images are displayed as block elements */
+      margin-left: auto; /* Center image horizontally within cell */
+      margin-right: auto;
+    }
+  </style>
 </head>
 <body>
   <h1>Marvel Story</h1>
   <p><strong>Description:</strong> </p>
   
   <h2>Characters in this story:</h2>
-  <ul>
-    
-      <li>X-Men</li>
-    
-  </ul>
+
+  <table>
+    <tbody>
+      
+        
+          <!-- Start a new row for every 3 characters -->
+          <tr>
+        
+        <td>
+          <h3>Cyclops</h3>
+          <img src="http://i.annihil.us/u/prod/marvel/i/mg/6/70/526547e2d90ad.jpg" alt="Cyclops">
+        </td>
+        
+      
+        
+        <td>
+          <h3>Iceman</h3>
+          <img src="http://i.annihil.us/u/prod/marvel/i/mg/1/d0/52696c836898c.jpg" alt="Iceman">
+        </td>
+        
+      
+        
+        <td>
+          <h3>Nightcrawler</h3>
+          <img src="http://i.annihil.us/u/prod/marvel/i/mg/1/40/526034979bc98.jpg" alt="Nightcrawler">
+        </td>
+        
+          <!-- End the row after every 3 characters or at the end of the list -->
+          </tr>
+        
+      
+        
+          <!-- Start a new row for every 3 characters -->
+          <tr>
+        
+        <td>
+          <h3>Rogue</h3>
+          <img src="http://i.annihil.us/u/prod/marvel/i/mg/3/10/5112d84e2166c.jpg" alt="Rogue">
+        </td>
+        
+      
+        
+        <td>
+          <h3>Wolverine</h3>
+          <img src="http://i.annihil.us/u/prod/marvel/i/mg/2/60/537bcaef0f6cf.jpg" alt="Wolverine">
+        </td>
+        
+      
+        
+        <td>
+          <h3>X-Men</h3>
+          <img src="http://i.annihil.us/u/prod/marvel/i/mg/8/03/510c08f345938.jpg" alt="X-Men">
+        </td>
+        
+          <!-- End the row after every 3 characters or at the end of the list -->
+          </tr>
+        
+      
+    </tbody>
+  </table>
 
   <footer>
     <p>Marvel API data provided by Marvel. &copy; 2024</p>

@@ -3,17 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <title>Marvel Story</title>
+  <style>
+    /* Optional: Add any additional CSS styles here */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table, th, td {
+      border: 1px solid black;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    img {
+      max-width: 100px; /* Adjust the image width as desired */
+      height: auto; /* Maintain aspect ratio */
+      display: block; /* Ensure images are displayed as block elements */
+      margin-left: auto; /* Center image horizontally within cell */
+      margin-right: auto;
+    }
+  </style>
 </head>
 <body>
   <h1>Marvel Story</h1>
   <p><strong>Description:</strong> <%= description %></p>
   
   <h2>Characters in this story:</h2>
-  <ul>
-    <% characters.each do |character| %>
-      <li><%= character['name'] %></li>
-    <% end %>
-  </ul>
+
+  <table>
+    <tbody>
+      <% characters.each_with_index do |character, index| %>
+        <% if index % 3 == 0 %>
+          <!-- Start a new row for every 3 characters -->
+          <tr>
+        <% end %>
+        <td>
+          <h3><%= character['name'] %></h3>
+          <img src="<%= character['resourceURI'] %>" alt="<%= character['name'] %>">
+        </td>
+        <% if (index + 1) % 3 == 0 || index == characters.length - 1 %>
+          <!-- End the row after every 3 characters or at the end of the list -->
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
 
   <footer>
     <p>Marvel API data provided by Marvel. &copy; <%= Time.now.year %></p>
